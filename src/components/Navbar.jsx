@@ -2,8 +2,8 @@ export default function Navbar() {
   return (
     <header className="nav">
       <div className="shell nav__inner">
-        <a className="brand" href="#top" aria-label="Marlowe Tutoring home">
-          Marlowe<span className="brand__mark">.</span>
+        <a className="brand" href="#top" aria-label="Hernandez Learning Academy home">
+          Hernandez Learning Academy<span className="brand__mark">.</span>
         </a>
 
         <nav className="nav__links" aria-label="Primary">

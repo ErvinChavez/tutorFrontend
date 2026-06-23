@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="shell footer__inner">
         <a className="brand" href="#top">
-          Marlowe<span className="brand__mark">.</span>
+          Hernandez Learning Academy<span className="brand__mark">.</span>
         </a>
 
         <nav className="footer__links" aria-label="Footer">
@@ -16,7 +16,7 @@ export default function Footer() {
           <Link to="/admin/login">Teacher login</Link>
         </nav>
 
-        <p className="footer__meta">© {year} Marlowe Tutoring</p>
+        <p className="footer__meta">© {year} Hernandez Learning Academy</p>
       </div>
     </footer>
   );

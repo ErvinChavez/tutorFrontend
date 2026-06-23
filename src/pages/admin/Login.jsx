@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { useNavigate, useLocation, Navigate, Link } from 'react-router-dom';
 
 import { ADMIN_LOGIN } from '../../graphql/admin.js';
-import { useAuth } from '../../auth/AuthContext.jsx';
+import { useAuth } from '../../auth/AutoContext.jsx';
 
 export default function Login() {
   const { isAuthenticated, login } = useAuth();

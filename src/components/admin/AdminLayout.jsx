@@ -1,6 +1,6 @@
 import { Outlet, NavLink, Link } from 'react-router-dom';
 
-import { useAuth } from '../../auth/AuthContext.jsx';
+import { useAuth } from '../../auth/AutoContext.jsx';
 
 const navClass = ({ isActive }) =>
   'admin__navlink' + (isActive ? ' is-active' : '');

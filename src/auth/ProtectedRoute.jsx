@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
-import { useAuth } from './AuthContext.jsx';
+import { useAuth } from './AutoContext.jsx';
 
 export default function ProtectedRoute() {
   const { isAuthenticated } = useAuth();
