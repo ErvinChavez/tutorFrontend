@@ -1,0 +1,694 @@
+/* ============================================================
+   Marlowe Tutoring — design system
+   Burgundy + brass on parchment. Fraunces (display) / Hanken (body).
+   Single stylesheet, single-class selectors, careful spacing rhythm.
+   ============================================================ */
+
+:root {
+  /* Color */
+  --ink: #241318;
+  --ink-soft: #6f5a5f;
+  --wine: #5c1a2e;
+  --wine-deep: #3a0f1d;
+  --wine-bright: #7a2740;
+  --brass: #c29b4e;
+  --brass-deep: #a47e36;
+  --parchment: #faf6f0;
+  --card: #ffffff;
+  --line: #e7ddd4;
+  --rose-mist: #f1e6e4;
+  --on-wine: #f6ece4;
+  --on-wine-soft: rgba(246, 236, 228, 0.72);
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+
+  /* Shape */
+  --radius: 14px;
+  --radius-sm: 9px;
+  --shadow: 0 18px 48px -28px rgba(58, 15, 29, 0.45);
+  --shadow-soft: 0 8px 24px -16px rgba(58, 15, 29, 0.3);
+
+  /* Rhythm */
+  --section-y: clamp(4rem, 9vw, 7.5rem);
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+  --maxw: 1140px;
+}
+
+/* ---------- Reset / base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Layout helpers ---------- */
+.shell {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.section--wine {
+  background: var(--wine);
+  color: var(--on-wine);
+}
+
+.section--mist {
+  background: var(--rose-mist);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass-deep);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 26px;
+  height: 1.5px;
+  background: var(--brass);
+}
+
+.section--wine .eyebrow {
+  color: var(--brass);
+}
+
+.section-head {
+  max-width: 40rem;
+  margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
+}
+
+.section-head h2 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  margin-top: 0.9rem;
+}
+
+.section-head p {
+  margin-top: 1rem;
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+}
+
+.section--wine .section-head p {
+  color: var(--on-wine-soft);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn--primary {
+  background: var(--wine);
+  color: var(--on-wine);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn--primary:hover {
+  background: var(--wine-bright);
+}
+
+.btn--brass {
+  background: var(--brass);
+  color: var(--wine-deep);
+}
+
+.btn--brass:hover {
+  background: var(--brass-deep);
+  color: var(--on-wine);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.btn--ghost:hover {
+  border-color: var(--wine);
+  color: var(--wine);
+}
+
+.section--wine .btn--ghost {
+  border-color: rgba(246, 236, 228, 0.4);
+  color: var(--on-wine);
+}
+
+.section--wine .btn--ghost:hover {
+  border-color: var(--brass);
+  color: var(--brass);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- Navbar ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 246, 240, 0.85);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--wine);
+}
+
+.brand__mark {
+  color: var(--brass-deep);
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav__link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: color 0.2s ease;
+}
+
+.nav__link:hover {
+  color: var(--wine);
+}
+
+.nav__cta {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 720px) {
+  .nav__links .nav__link {
+    display: none;
+  }
+}
+
+/* ---------- Hero (the signature lives here) ---------- */
+.hero {
+  position: relative;
+  background: radial-gradient(
+      120% 130% at 85% 0%,
+      var(--wine-bright) 0%,
+      var(--wine) 42%,
+      var(--wine-deep) 100%
+    );
+  color: var(--on-wine);
+  overflow: hidden;
+}
+
+/* Faint ruled-margin line, like the red rule down a sheet of paper */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(1.25rem, 5vw, 3rem);
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(194, 155, 78, 0.35),
+    transparent
+  );
+}
+
+.hero__inner {
+  padding-block: clamp(4.5rem, 11vw, 8rem);
+  max-width: 46rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* The teacher's pen-underline — the one bold flourish */
+.mark {
+  position: relative;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.mark::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  bottom: 0.04em;
+  height: 0.16em;
+  background: var(--brass);
+  border-radius: 0 6px 4px 8px;
+  transform: rotate(-0.7deg);
+  transform-origin: left;
+  animation: penstroke 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+}
+
+@keyframes penstroke {
+  from {
+    transform: rotate(-0.7deg) scaleX(0);
+  }
+  to {
+    transform: rotate(-0.7deg) scaleX(1);
+  }
+}
+
+.hero__lead {
+  margin-top: 1.6rem;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--on-wine-soft);
+  max-width: 34rem;
+}
+
+.hero__actions {
+  margin-top: 2.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.hero__trust {
+  margin-top: 2.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  color: var(--on-wine-soft);
+}
+
+.hero__trust strong {
+  color: var(--brass);
+  font-weight: 600;
+}
+
+/* ---------- How it works (genuine 01/02/03 sequence) ---------- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.step {
+  border-top: 2px solid var(--line);
+  padding-top: 1.4rem;
+}
+
+.step__num {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--brass-deep);
+  letter-spacing: 0.04em;
+}
+
+.step h3 {
+  font-size: 1.35rem;
+  margin: 0.7rem 0 0.6rem;
+}
+
+.step p {
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+@media (max-width: 760px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Testimonials (marked-up note cards) ---------- */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
+
+.review-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.6rem 1.5rem;
+  box-shadow: var(--shadow-soft);
+  /* a little folded-corner / margin accent */
+  border-left: 3px solid var(--brass);
+}
+
+.review-card__stars {
+  display: inline-flex;
+  gap: 2px;
+  margin-bottom: 0.9rem;
+}
+
+.review-card__msg {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.review-card__author {
+  margin-top: 1.1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--wine);
+}
+
+.reviews-empty {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  text-align: center;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Star glyph */
+.star {
+  width: 18px;
+  height: 18px;
+}
+
+.star path {
+  fill: var(--brass);
+}
+
+.star--empty path {
+  fill: none;
+  stroke: var(--brass);
+  stroke-width: 1.4;
+  opacity: 0.5;
+}
+
+/* ---------- Forms ---------- */
+.form-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .form-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 4vw, 2.4rem);
+  box-shadow: var(--shadow);
+}
+
+.field {
+  margin-bottom: 1.1rem;
+}
+
+.field--row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 520px) {
+  .field--row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--parchment);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 0.85rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--wine);
+  background: var(--card);
+  box-shadow: 0 0 0 3px rgba(92, 26, 46, 0.12);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-note {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-top: 0.4rem;
+}
+
+.form-aside h2 {
+  font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+}
+
+.form-aside p {
+  margin-top: 1rem;
+  color: var(--ink-soft);
+}
+
+.form-aside .eyebrow {
+  margin-bottom: 0.9rem;
+}
+
+/* ---------- Inline feedback states ---------- */
+.alert {
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  font-size: 0.94rem;
+  margin-bottom: 1.1rem;
+}
+
+.alert--error {
+  background: #fbeaec;
+  border: 1px solid #e8b9c1;
+  color: #7d1f2f;
+}
+
+.alert--success {
+  background: #eef5ec;
+  border: 1px solid #bcd9b6;
+  color: #2f5d2a;
+}
+
+/* Success panel that replaces a form after submit */
+.result {
+  text-align: center;
+  padding: clamp(1.5rem, 4vw, 2.5rem) 1rem;
+}
+
+.result__seal {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.1rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--rose-mist);
+  color: var(--wine);
+}
+
+.result h3 {
+  font-size: 1.5rem;
+}
+
+.result p {
+  margin-top: 0.7rem;
+  color: var(--ink-soft);
+}
+
+.result .btn {
+  margin-top: 1.4rem;
+}
+
+/* Star input (clickable) for the review form */
+.star-input {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.star-input button {
+  background: none;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 4px;
+}
+
+.star-input .star path {
+  transition: fill 0.12s ease;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--wine-deep);
+  color: var(--on-wine-soft);
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer .brand {
+  color: var(--on-wine);
+}
+
+.footer__meta {
+  font-size: 0.85rem;
+}
+
+.footer__links {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.footer__links a:hover {
+  color: var(--brass);
+}
+
+/* ---------- Motion preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
