@@ -1,7 +1,5 @@
 import { gql } from '@apollo/client';
 
-/* ---------------- Auth ---------------- */
-
 export const ADMIN_LOGIN = gql`
   mutation AdminLogin($email: String!, $password: String!) {
     adminLogin(email: $email, password: $password) {
@@ -15,8 +13,6 @@ export const ADMIN_LOGIN = gql`
     }
   }
 `;
-
-/* ---------------- Requests ---------------- */
 
 export const GET_REQUESTS = gql`
   query Requests {
@@ -53,8 +49,6 @@ export const CONVERT_REQUEST_TO_STUDENT = gql`
   }
 `;
 
-/* ---------------- Students ---------------- */
-
 export const GET_STUDENTS = gql`
   query Students {
     students {
@@ -70,8 +64,6 @@ export const GET_STUDENTS = gql`
     }
   }
 `;
-
-/* ---------------- Sessions ---------------- */
 
 const SESSION_FIELDS = gql`
   fragment SessionFields on Session {
@@ -124,8 +116,6 @@ export const UPDATE_SESSION_PAYMENT = gql`
     }
   }
 `;
-
-/* ---------------- Testimonials ---------------- */
 
 export const ALL_TESTIMONIALS = gql`
   query AllTestimonials {

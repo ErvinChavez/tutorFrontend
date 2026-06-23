@@ -25,7 +25,7 @@ export default function RequestsView() {
     fetchPolicy: 'cache-and-network',
   });
   const [updateStatus] = useMutation(UPDATE_REQUEST_STATUS);
-  // Refetch the students list too, so a freshly-created student shows up there.
+
   const [convert] = useMutation(CONVERT_REQUEST_TO_STUDENT, {
     refetchQueries: [{ query: GET_STUDENTS }],
   });

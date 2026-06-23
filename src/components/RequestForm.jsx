@@ -27,7 +27,6 @@ export default function RequestForm() {
       setDone(true);
       setForm(EMPTY);
     } catch {
-      // Error surfaced via the `error` object below; nothing else to do here.
     }
   };
 

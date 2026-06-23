@@ -22,11 +22,9 @@ export default function ReviewForm() {
       });
       setResult(data.submitTestimonial);
     } catch {
-      // surfaced via `error`
     }
   };
 
-  // After submitting, show a response shaped by the rating the backend routed.
   if (result) {
     return (
       <section className="section" id="leave-review">

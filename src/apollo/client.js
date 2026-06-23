@@ -13,8 +13,6 @@ const httpLink = new HttpLink({
   uri: import.meta.env.VITE_API_URL || 'http://localhost:4000/graphql',
 });
 
-// Attach the stored JWT as a Bearer token on every request. Public operations
-// simply send no token; guarded ones get authenticated automatically.
 const authLink = setContext((_, { headers }) => {
   const token = getToken();
   return {
@@ -25,10 +23,6 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-// If the server rejects a request as UNAUTHENTICATED *while we hold a token*,
-// that token is missing/expired/invalid — drop it and bounce to the login
-// screen. The `getToken()` guard means a failed login (which also returns
-// UNAUTHENTICATED, but with no token present) won't trigger a redirect.
 const errorLink = onError(({ graphQLErrors }) => {
   const unauthenticated = graphQLErrors?.some(
     (e) => e.extensions?.code === 'UNAUTHENTICATED'

@@ -5,7 +5,6 @@ import ReviewForm from '../components/ReviewForm.jsx';
 export default function Home() {
   return (
     <div id="top">
-      {/* Hero — the signature pen-underline lives on "knows them" */}
       <section className="hero">
         <div className="shell hero__inner">
           <span className="eyebrow">Private one-to-one tutoring</span>
@@ -31,7 +30,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How it works — a real three-step sequence, hence the numbering */}
       <section className="section" id="how">
         <div className="shell">
           <div className="section-head">

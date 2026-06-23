@@ -1,9 +1,4 @@
-/* ============================================================
-   Admin dashboard styles. Reuses tokens + .btn/.input/.field/.label
-   /.alert from global.css; adds the dashboard-specific surfaces.
-   ============================================================ */
 
-/* ---------- Login ---------- */
 .login {
   min-height: 100vh;
   display: grid;

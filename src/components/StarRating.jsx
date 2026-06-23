@@ -1,4 +1,3 @@
-// A single five-point star. `filled` toggles the brass fill vs. outline.
 export function Star({ filled = true, size = 18 }) {
   return (
     <svg
@@ -13,7 +12,6 @@ export function Star({ filled = true, size = 18 }) {
   );
 }
 
-// A read-only row of five stars reflecting a rating (1–5).
 export default function StarRating({ rating = 0, size = 18 }) {
   return (
     <span

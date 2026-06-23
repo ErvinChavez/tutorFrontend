@@ -7,7 +7,6 @@ export default function ProtectedRoute() {
   const location = useLocation();
 
   if (!isAuthenticated) {
-    // Remember where they were headed so login can send them back.
     return <Navigate to="/admin/login" replace state={{ from: location }} />;
   }
 

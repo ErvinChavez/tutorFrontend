@@ -25,7 +25,6 @@ export function AuthProvider({ children }) {
     clearSession();
     setToken(null);
     setAdmin(null);
-    // Drop any cached admin-only data so it can't linger after sign-out.
     await client.clearStore();
   }, [client]);
 

@@ -14,7 +14,6 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [doLogin, { loading, error }] = useMutation(ADMIN_LOGIN);
 
-  // Already signed in? Skip the form.
   if (isAuthenticated) return <Navigate to="/admin" replace />;
 
   const onSubmit = async (e) => {
@@ -25,7 +24,6 @@ export default function Login() {
       const dest = location.state?.from?.pathname || '/admin';
       navigate(dest, { replace: true });
     } catch {
-      // Error shown below via the `error` object.
     }
   };
 
@@ -33,7 +31,7 @@ export default function Login() {
     <div className="login">
       <div className="login__card">
         <Link className="login__brand" to="/">
-          Marlowe<span>.</span>
+          Hernandez Learning Academy<span>.</span>
         </Link>
         <h1 className="login__title">Teacher sign in</h1>
         <p className="login__sub">Access your dashboard.</p>

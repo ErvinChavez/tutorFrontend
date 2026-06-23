@@ -14,15 +14,12 @@ import TestimonialsView from './pages/admin/TestimonialsView.jsx';
 export default function App() {
   return (
     <Routes>
-      {/* Public marketing site */}
       <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
       </Route>
 
-      {/* Admin login (public, but redirects in if already authed) */}
       <Route path="/admin/login" element={<Login />} />
 
-      {/* Protected dashboard */}
       <Route element={<ProtectedRoute />}>
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<RequestsView />} />

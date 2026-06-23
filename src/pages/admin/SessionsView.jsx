@@ -30,7 +30,7 @@ function formatDate(iso) {
 }
 
 export default function SessionsView() {
-  const [tab, setTab] = useState('all'); // 'all' | 'unpaid'
+  const [tab, setTab] = useState('all');
   const [form, setForm] = useState(EMPTY_FORM);
   const [formError, setFormError] = useState(null);
   const [actingId, setActingId] = useState(null);
@@ -99,7 +99,6 @@ export default function SessionsView() {
         </div>
       </div>
 
-      {/* Schedule a session */}
       <div className="admin-panel">
         <h2 className="admin-panel__title">Schedule a session</h2>
         {formError && <div className="alert alert--error">{formError}</div>}

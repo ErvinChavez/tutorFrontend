@@ -13,7 +13,7 @@ export default function AdminLayout() {
       <header className="admin__bar">
         <div className="admin__bar-left">
           <Link className="admin__brand" to="/admin">
-            Marlowe<span>.</span>
+            Hernandez Learning Academy<span>.</span>
           </Link>
           <span className="admin__tag">Dashboard</span>
         </div>
